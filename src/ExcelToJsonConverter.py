@@ -8,7 +8,7 @@ outputPath = './json/'
 files = os.listdir(inputPath)
 for file in files:
 
-    fileName = file.replace('_テーブル定義書.xlsx', '')
+    fileName = file.replace('.xlsx', '')
     if not os.path.exists(outputPath + fileName):
         os.mkdir(outputPath + fileName)
 
