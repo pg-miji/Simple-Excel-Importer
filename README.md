@@ -13,7 +13,7 @@ Please change the path or database information.
 2. Run ExcelToJsonConverter.py.
 
    ```
-   py src/ExcelToJsonConverter.py "blog"
+   py src/ExcelToJsonConverter.py
    ```
 
 3. Make sure the file is in the json folder.
