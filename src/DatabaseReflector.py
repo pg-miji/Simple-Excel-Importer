@@ -14,7 +14,7 @@ for folder in os.listdir(path):
               parentCategoryNames.append(folder)
 
 connect = Connector().get()
-cursor = connect.cursor()
+cursor = connect.cursor(buffered=True)
 dao = Dao
 
 for parentCategoryName in parentCategoryNames:

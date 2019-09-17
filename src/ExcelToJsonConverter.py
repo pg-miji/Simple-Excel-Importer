@@ -14,7 +14,8 @@ for file in files:
 
     excel = openpyxl.load_workbook(inputPath)
     sheetNames = excel.sheetnames
-    sheetNames.remove('unnecessary file')
+    if 'unnecessary file' in sheetNames:
+        sheetNames.remove('unnecessary file')
 
     for sheetName in sheetNames:
         sheet = excel[sheetName]
@@ -26,10 +27,10 @@ for file in files:
             comment = sheet.cell(row=i, column=8).value
             column = {
                 "name": name,
-                "comment": comment
+                "comment": str(comment)
             }
 
-            with open(outputPath+'/'+sheetName+'.json', 'a') as f:
+            with open(outputPath+'/'+sheetName+'.json', 'a', encoding="utf-8") as f:
                 if i == 11:
                     f.write('[')
                 elif name == '' or name is None:
@@ -38,4 +39,4 @@ for file in files:
                 else:
                     f.write(',')
 
-                f.write(json.dumps(column, sort_keys=False, ensure_ascii=False, indent=4))
+                f.write(json.dumps(column, ensure_ascii=False, indent=4))

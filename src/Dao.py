@@ -5,13 +5,13 @@ class Dao:
     def getParentCategoryCode(cursor, categoryName):
 
         sql = """
-             SELECT
-                 code
-             FROM
-                 parent_categories
-             WHERE
-                 name = '%s'
-             """
+        SELECT
+            code
+        FROM
+            parent_categories
+        WHERE
+            name = '%s'
+        """
 
         cursor.execute(sql % categoryName)
         parentCategoryCode = cursor.fetchone()
@@ -24,14 +24,14 @@ class Dao:
     def getChildCategoryCode(cursor, parentCategoryCode, childCategoryName):
 
         sql = """
-             SELECT
-                 code
-             FROM
-                 categories
-             WHERE
-                 parent_category_code = %s
-                 AND name = '%s'
-             """
+        SELECT
+            code
+        FROM
+            categories
+        WHERE
+            parent_category_code = %s
+            AND name = %s
+        """
 
         cursor.execute(sql, (parentCategoryCode, childCategoryName))
         childCategoryCode = cursor.fetchone()
